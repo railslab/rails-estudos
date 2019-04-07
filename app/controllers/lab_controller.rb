@@ -11,8 +11,8 @@ class LabController < ApplicationController
   def env
     data = {
       request_id: request.request_id,
+      heroku: request.env.slice('HTTP_CONNECT_TIME', 'HTTP_X_REQUEST_START', 'HTTP_TOTAL_ROUTE_TIME'),
       ENV: ENV.sort.to_h,
-      env: request.env.keys,
       headers: headers
     }
     render json: data
