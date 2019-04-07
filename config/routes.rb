@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  scope "lab", controller: "lab" do
+    get "delay(/:seconds)", action: "delay"
+    get "env"
+  end
+
   resources :users
 
   root to: "users#index"
