@@ -11,6 +11,7 @@ class LabController < ApplicationController
   def env
     data = {
       request_id: request.request_id,
+      request_start_time: Time.zone.at(request.env['HTTP_X_REQUEST_START'].to_i),
       heroku: request.env.slice('HTTP_CONNECT_TIME', 'HTTP_X_REQUEST_START', 'HTTP_TOTAL_ROUTE_TIME'),
       ENV: ENV.sort.to_h,
       headers: headers
